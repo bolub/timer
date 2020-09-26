@@ -1,10 +1,13 @@
-import React from 'react'
+import React from 'react';
+
+import { Container, Text, Button } from '@chakra-ui/core';
 
 const Landing = () => {
   return (
-    <div>
-      Hello from landin
-    </div>
+    <Container d="flex" mt={10} maxW="110ch">
+      <Text color="red.500" my="auto" fontSize="xl" fontWeight="900">Timer</Text>
+      <Button my="auto" ml="auto" colorScheme="red" fontSize="sm">Login</Button>
+    </Container>
   )
 }
 
