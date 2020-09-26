@@ -18,7 +18,7 @@ const CustomModal = ({ size = "md", isOpen, onClose, headerPTop = 4, bodyPX = 6,
   return (
     <Modal isOpen={isOpen} size={size} onClose={onClose}>
       <ModalOverlay>
-        <ModalContent>
+        <ModalContent boxShadow="md" borderWidth="1px">
           <ModalHeader py={headerPTop}>
             {headerChildren}
           </ModalHeader>
