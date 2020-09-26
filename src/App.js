@@ -9,6 +9,8 @@ import { Switch, Route } from 'react-router-dom';
 
 const Landing = lazy(() => import('./Components/Landing'));
 const Dashboard = lazy(() => import('./Components/Dashboard'));
+const Login = lazy(() => import('./Components/Auth/Login'))
+const Signup = lazy(() => import('./Components/Auth/Signup'))
 
 const Loader = () => {
   return (
@@ -24,6 +26,14 @@ function App() {
       <Switch>
         <Route exact path="/">
           <Landing />
+        </Route>
+
+        <Route exact path="/login">
+          <Login />
+        </Route>
+
+        <Route exact path="/signup">
+          <Signup />
         </Route>
 
         <Route path="/dashboard">
