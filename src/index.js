@@ -2,11 +2,19 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
+import {
+  ChakraProvider,
+  CSSReset,
+} from '@chakra-ui/core';
 import reportWebVitals from './reportWebVitals';
+import { customTheme } from './Helpers/ChakraTheme';
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <ChakraProvider theme={customTheme}>
+      <CSSReset />
+      <App />
+    </ChakraProvider>
   </React.StrictMode>,
   document.getElementById('root')
 );
