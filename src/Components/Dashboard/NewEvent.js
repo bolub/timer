@@ -1,9 +1,7 @@
 import React from 'react';
 import {
-  Box, Text, Flex, Center, ModalFooter, Button, Wrap, Input, FormControl,
+  Flex, Center, ModalFooter, Button, Wrap, Input, FormControl,
   FormLabel,
-  FormErrorMessage,
-  FormHelperText,
   Textarea
 } from '@chakra-ui/core';
 
