@@ -9,16 +9,29 @@ import {
 import reportWebVitals from './reportWebVitals';
 import { customTheme } from './Helpers/ChakraTheme';
 import { BrowserRouter } from 'react-router-dom';
+import firebase from 'firebase'
+
+const config = {
+  apiKey: "AIzaSyDF_y1oUzTaPW3ILnBzERGI-yWYxLzn6FA",
+  authDomain: "timer-7f624.firebaseapp.com",
+  databaseURL: "https://timer-7f624.firebaseio.com",
+  projectId: "timer-7f624",
+  storageBucket: "timer-7f624.appspot.com",
+  messagingSenderId: "1089958449183",
+  appId: "1:1089958449183:web:257aaa22516644579f452a",
+  measurementId: "G-1YYLNGMJ71"
+}
+
+firebase.initializeApp(config);
+firebase.analytics();
 
 ReactDOM.render(
-  <React.StrictMode>
-    <BrowserRouter>
-      <ChakraProvider theme={customTheme}>
-        <CSSReset />
-        <App />
-      </ChakraProvider>
-    </BrowserRouter>
-  </React.StrictMode>,
+  <BrowserRouter>
+    <ChakraProvider theme={customTheme}>
+      <CSSReset />
+      <App />
+    </ChakraProvider>
+  </BrowserRouter>,
   document.getElementById('root')
 );
 
