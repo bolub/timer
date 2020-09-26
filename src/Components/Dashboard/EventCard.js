@@ -16,7 +16,7 @@ const EventCard = ({ title = "My Birthday", date = "5 days from now" }) => {
           {title}
         </Heading>
 
-        <Text fontSize="sm" mt="1" color="red.500" fontWeight="700">{date}</Text>
+        <Text fontSize="sm" mt="1" color="primary.500" fontWeight="700">{date}</Text>
 
 
         <Text mt="4" color="#737373" fontWeight="700" fontSize="xl">

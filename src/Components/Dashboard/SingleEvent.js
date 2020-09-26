@@ -1,11 +1,11 @@
 import React from 'react';
-import { Box, Text, Flex, Center, ModalFooter, Button, Wrap } from '@chakra-ui/core';
+import { Box, Text, Center, ModalFooter, Button, Wrap } from '@chakra-ui/core';
 
 const SingleEvent = ({ description, time, close }) => {
   return (
     <React.Fragment>
       <Center flexDir="column" bg="rgba(242,242,242,0.35)" px="6" py="12">
-        <Wrap color="red.500" fontSize="sm" fontWeight="bold" spacing="20px">
+        <Wrap color="primary.500" fontSize="sm" fontWeight="bold" spacing="20px">
           <Text>2 months</Text>
           <Text>2 weeks</Text>
           <Text>3 days</Text>

@@ -18,8 +18,8 @@ const Landing = () => {
       {/* Navbar */}
       <nav>
         <Flex mb="10">
-          <Text color="red.500" my="auto" fontSize="xl" fontWeight="900">Timer</Text>
-          <Button my="auto" ml="auto" colorScheme="red" fontWeight="bold">Contact Developer</Button>
+          <Text color="primary.500" my="auto" fontSize="xl" fontWeight="900">Timer</Text>
+          <Button my="auto" ml="auto" colorScheme="primary" fontWeight="bold">Contact Developer</Button>
         </Flex>
       </nav>
 

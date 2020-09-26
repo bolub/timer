@@ -1,6 +1,6 @@
 import React from 'react';
 import {
-  Flex, Center, ModalFooter, Button, Wrap, Input, FormControl,
+  Flex, Button, Input, FormControl,
   FormLabel,
   Textarea
 } from '@chakra-ui/core';
@@ -38,7 +38,7 @@ const NewEvent = ({ close }) => {
           Cancel
         </Button>
 
-        <Button ml="2" fontWeight="bold" colorScheme="red" fontSize="sm" py="6" my="auto" borderRadius="md">
+        <Button ml="2" fontWeight="bold" colorScheme="primary" fontSize="sm" py="6" my="auto" borderRadius="md">
           Create Event
         </Button>
       </Flex>
