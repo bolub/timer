@@ -8,13 +8,16 @@ import {
 } from '@chakra-ui/core';
 import reportWebVitals from './reportWebVitals';
 import { customTheme } from './Helpers/ChakraTheme';
+import { BrowserRouter } from 'react-router-dom';
 
 ReactDOM.render(
   <React.StrictMode>
-    <ChakraProvider theme={customTheme}>
-      <CSSReset />
-      <App />
-    </ChakraProvider>
+    <BrowserRouter>
+      <ChakraProvider theme={customTheme}>
+        <CSSReset />
+        <App />
+      </ChakraProvider>
+    </BrowserRouter>
   </React.StrictMode>,
   document.getElementById('root')
 );

@@ -1,13 +1,31 @@
-import React from 'react';
+import React, { lazy, Suspense } from 'react';
+
 import {
-  Box
+  Spinner,
+  Center
 } from '@chakra-ui/core';
+
+import { Switch, Route } from 'react-router-dom';
+
+const Landing = lazy(() => import('./Components/Landing'));
+
+const Loader = () => {
+  return (
+    <Center height="100vh">
+      <Spinner />
+    </Center>
+  );
+}
 
 function App() {
   return (
-    <Box textAlign="center" fontSize="xl">
-      hello
-    </Box>
+    <Suspense fallback={<Loader />}>
+      <Switch>
+        <Route path="/">
+          <Landing />
+        </Route>
+      </Switch>
+    </Suspense>
   );
 }
 
