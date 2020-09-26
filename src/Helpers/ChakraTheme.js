@@ -9,7 +9,7 @@ const customTheme = {
   },
   colors: {
     ...theme.colors,
-    red: {
+    primary: {
       50: '#ffeaed',
       100: '#ebcbcd',
       200: '#d6abac',
@@ -33,7 +33,7 @@ const customTheme = {
       700: '#404040',
       800: '#262626',
       900: '#0d0d0d',
-    }
+    },
   }
 }
 
