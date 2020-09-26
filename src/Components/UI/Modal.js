@@ -5,10 +5,8 @@ import {
   ModalOverlay,
   ModalContent,
   ModalHeader,
-  ModalFooter,
   ModalBody,
   ModalCloseButton,
-  useDisclosure
 } from "@chakra-ui/core"
 
 const CustomModal = ({ size = "md", isOpen, onClose, headerPTop = 4, bodyPX = 6, headerChildren, children }) => {
