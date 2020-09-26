@@ -27,7 +27,7 @@ const Landing = () => {
               </svg>
 
             </Text>
-            <Text fontWeight="bold" mt="3">New Counter</Text>
+            <Text fontWeight="bold" mt="3">New Event</Text>
           </Button>
 
           <EventCard title="Graduation" />
