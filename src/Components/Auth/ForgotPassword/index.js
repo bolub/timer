@@ -4,19 +4,18 @@ import firebase from 'firebase'
 
 import {
   Box, Text, Flex, Button,
-  Container, useToast
+  Container,
+  useToast
 } from '@chakra-ui/core';
 
 import { Link } from 'react-router-dom'
 import { useForm } from "react-hook-form";
 import FormControlInput from '../../UI/Form/FormControlInput';
 
-
-const Signup = () => {
+const ResetPassword = () => {
   const toast = useToast();
   const [loading, setLoading] = useState(false);
   if (localStorage.getItem("loggedIn") === true) { window.location.href = "/dashboard" }
-
 
   // CHeck if user is logged in
   // firebase.auth().onAuthStateChanged(function (user) {
@@ -27,28 +26,20 @@ const Signup = () => {
   //   }
   // });
 
-  const createUser = async (email, password) => {
+  const ResetPassword = async (email) => {
     setLoading(true)
     try {
-      await firebase.auth().createUserWithEmailAndPassword(email, password);
-      const user = firebase.auth().currentUser;
+      await firebase.auth().sendPasswordResetEmail(email);
+      toast({
+        title: "Success",
+        description: "Reset Instructions been sent to your account",
+        status: "success",
+        duration: 10000,
+        isClosable: true,
+        position: "top-right"
+      })
 
-      user.sendEmailVerification().then(function () {
-        toast({
-          title: "Success",
-          description: "Account created successfully",
-          status: "success",
-          duration: 10000,
-          isClosable: true,
-          position: "top-right"
-        })
-
-        setLoading(false);
-        window.location.href = "/dashboard"
-      }).catch(function (error) {
-        // An error happened.
-      });
-
+      setLoading(false);
 
     } catch (error) {
       setLoading(false);
@@ -66,10 +57,12 @@ const Signup = () => {
 
   }
 
+
   const { register, handleSubmit, errors } = useForm();
   const onSubmit = data => {
-    createUser(data.email, data.password)
+    ResetPassword(data.email)
   };
+
 
 
   return (
@@ -78,11 +71,15 @@ const Signup = () => {
       <Container m="auto" maxW="40ch" >
         <Text textAlign="center" color="primary.500" fontSize="4xl" fontWeight="900">Timer</Text>
 
-        <Text textAlign="center" fontWeight="bold" fontSize="lg">Signup for your account</Text>
+        <Text textAlign="center" fontWeight="bold" fontSize="lg">
+          Reset your password
+        </Text>
 
 
         {/* Forms here */}
-        <Box px="6" pt="8" pb="8" mt="4" bg="white" borderWidth="1px" boxShadow="sm" borderRadius="md">
+        <Box px="6" pt="8" pb="8" mt="8" bg="white" borderWidth="1px" boxShadow="sm" borderRadius="md">
+          <Text fontSize="sm" mb="5">Enter your email and we'll send you instructions on how to reset your password.</Text>
+
           <form onSubmit={handleSubmit(onSubmit)}>
             {/* EMail */}
             <FormControlInput
@@ -102,34 +99,20 @@ const Signup = () => {
             />
 
 
-            {/* Password */}
-            <FormControlInput
-              type="password"
-              name="password"
-              label="Password"
-              errors={errors.password}
-              ref={register({
-                required: "Your password is required",
-                minLength: {
-                  value: 4,
-                  message: "Your password should be 4 words or more"
-                }
-              })}
-            />
+            {/* Forgot password */}
+            <Flex mb="2">
+              <Link to="/login">
+                <Text ml="auto" fontSize="sm" color="primary.500" fontWeight="bold">Back to Login
+                </Text>
+              </Link>
+
+            </Flex>
 
 
-            {/* <Flex mb="2">
-              <Text ml="auto" fontSize="sm" color="primary.500" fontWeight="bold">Forgot password?</Text>
-            </Flex> */}
+            <Button isLoading={loading} loadingText="Verifying your email..." type="submit" w="100%" fontWeight="bold" colorScheme="primary" fontSize="sm" py="6" my="auto" borderRadius="md">
+              Reset Password
+            </Button>
 
-
-            <Button isLoading={loading} loadingText="Creating your account" type="submit" w="100%" fontWeight="bold" colorScheme="primary" fontSize="sm" py="6" my="auto" borderRadius="md">
-              Signup
-        </Button>
-
-            <Link to="/login">
-              <Text mt="2" textAlign="center" ml="auto" fontSize="sm" color="primary.500" fontWeight="bold">Already have an account?Login</Text>
-            </Link>
           </form>
         </Box>
       </Container>
@@ -137,4 +120,4 @@ const Signup = () => {
   )
 }
 
-export default Signup
+export default ResetPassword

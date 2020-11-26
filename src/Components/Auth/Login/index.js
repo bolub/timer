@@ -15,7 +15,16 @@ import FormControlInput from '../../UI/Form/FormControlInput';
 const Login = () => {
   const toast = useToast();
   const [loading, setLoading] = useState(false);
+  if (localStorage.getItem("loggedIn") === true) { window.location.href = "/dashboard" }
 
+  // CHeck if user is logged in
+  // firebase.auth().onAuthStateChanged(function (user) {
+  //   if (user) {
+  //     window.location.href = "/dashboard";
+  //   } else {
+  //     console.log("logged out")
+  //   }
+  // });
 
   const loginUser = async (email, password) => {
     setLoading(true)
@@ -30,7 +39,10 @@ const Login = () => {
         position: "top-right"
       })
 
+      window.location.href = "/dashboard";
+      localStorage.setItem("loggedIn", true)
       setLoading(false);
+
     } catch (error) {
       setLoading(false);
 
@@ -52,6 +64,8 @@ const Login = () => {
   const onSubmit = data => {
     loginUser(data.email, data.password)
   };
+
+
 
   return (
     <Flex bg="rgba(242,242,242,0.2)" h="100vh">
@@ -90,17 +104,17 @@ const Login = () => {
               label="Password"
               errors={errors.password}
               ref={register({
-                required: "Your password is required",
-                minLength: {
-                  value: 4,
-                  message: "Your password should be 4 words or more"
-                }
+                required: "Your password is required"
               })}
             />
 
 
+            {/* Forgot password */}
             <Flex mb="2">
-              <Text ml="auto" fontSize="sm" color="primary.500" fontWeight="bold">Forgot password?</Text>
+              <Link to="/forgotPassword">
+                <Text ml="auto" fontSize="sm" color="primary.500" fontWeight="bold">Forgot password?</Text>
+              </Link>
+
             </Flex>
 
             {/* 
@@ -109,9 +123,9 @@ const Login = () => {
         </Button> */}
 
 
-            <Button isLoading={loading} loadingText="Creating your account" type="submit" w="100%" fontWeight="bold" colorScheme="primary" fontSize="sm" py="6" my="auto" borderRadius="md">
+            <Button isLoading={loading} loadingText="Verifying your details..." type="submit" w="100%" fontWeight="bold" colorScheme="primary" fontSize="sm" py="6" my="auto" borderRadius="md">
               Login
-        </Button>
+            </Button>
 
             <Link to="/signup">
               <Text mt="2" textAlign="center" ml="auto" fontSize="sm" color="primary.500" fontWeight="bold">Sign up for an account</Text>
